@@ -162,9 +162,9 @@ def mountaincar_results():
     success_rate = test_mountaincar(w, number_of_run, maximumsteps=200)
     print('LSTDQ success rate = ', success_rate)
 if __name__ == '__main__':
-    #chainwalk_fig1()
-    #chainwalk_fig2()
-    #chainwalk_fig3()
+    chainwalk_fig1()
+    chainwalk_fig2()
+    chainwalk_fig3()
     mountaincar_results()
 
 
