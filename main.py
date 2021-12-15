@@ -150,16 +150,16 @@ def mountaincar_results():
     number_of_run=20
     n_policy_iter=10
     np.random.seed(9)
-    rbf_eps=.001
+    rbf_eps=.02
     beta = 2
     gamma = 0.9
-    D=generate_mountaincar_data(n_sample,n_steps)
+    D=generate_mountaincar_data(n_sample,n_steps,rbf_eps)
 
-    w = mountaincar_policy(D, LARSTD, beta, gamma, n_policy_iter)
-    success_rate = test_mountaincar(w, number_of_run, maximumsteps=200)
+    w = mountaincar_policy(D, LARSTD, beta, gamma, n_policy_iter,rbf_eps)
+    success_rate = test_mountaincar(w, number_of_run, maximumsteps=1000,rbf_eps=rbf_eps)
     print('LARSTD success rate = ', success_rate)
-    w = mountaincar_policy(D, LSTDQ2, beta, gamma, n_policy_iter)
-    success_rate = test_mountaincar(w, number_of_run, maximumsteps=200)
+    w = mountaincar_policy(D, LSTDQ2, beta, gamma, n_policy_iter,rbf_eps)
+    success_rate = test_mountaincar(w, number_of_run, maximumsteps=1000,rbf_eps=rbf_eps)
     print('LSTDQ success rate = ', success_rate)
 if __name__ == '__main__':
     chainwalk_fig1()

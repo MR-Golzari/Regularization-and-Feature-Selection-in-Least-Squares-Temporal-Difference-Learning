@@ -1,7 +1,7 @@
 import numpy as np
 
 class MountainCar:
-    def __init__(self):
+    def __init__(self,rbf_eps):
 
         self.g = 9.8
         self.k = 0.3
@@ -27,7 +27,7 @@ class MountainCar:
                     rbf_mean_v.append(vm[k2])
         self.rbf_mean_x = np.array(rbf_mean_x)
         self.rbf_mean_v = np.array(rbf_mean_v)
-        self.rbf_eps = .005
+        self.rbf_eps = rbf_eps
         self.number_of_features = 1365
 
     def randomstate(self):

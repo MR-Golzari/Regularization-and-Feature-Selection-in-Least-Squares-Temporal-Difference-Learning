@@ -24,9 +24,9 @@ def policy_eval(env, w, gamma, theta=0.01):
             break
     return np.array(V)
 
-def generate_mountaincar_data(n_sample,n_steps):
+def generate_mountaincar_data(n_sample,n_steps,rbf_eps):
     D = []
-    env = MountainCar()
+    env = MountainCar(rbf_eps)
     policy = [0.334,0.333,0.333]
     for iter in range(n_sample):
       count=0
@@ -126,8 +126,8 @@ def fig1c(method, beta, gamma, n_sample, n_irr_features_vector, number_of_run,
         t[m] = time.process_time() - start_time
     return t
 
-def test_mountaincar(w,number_of_run,maximumsteps):
-    env = MountainCar()
+def test_mountaincar(w,number_of_run,maximumsteps,rbf_eps):
+    env = MountainCar(rbf_eps)
     success=0
     for i in range(number_of_run):
         x=-0.5
@@ -142,17 +142,15 @@ def test_mountaincar(w,number_of_run,maximumsteps):
             v = v2
             count+=1
             if done:
-              print('done')
               success+=1
               break
             if count==maximumsteps:
-              print('timeout')
               break
     success_rate = 100.0*success/number_of_run
     return success_rate
 
-def mountaincar_policy(D,method,beta,gamma,n_policy_iter=1):
-    env = MountainCar()
+def mountaincar_policy(D,method,beta,gamma,n_policy_iter,rbf_eps):
+    env = MountainCar(rbf_eps)
     w=np.random.randn(3*env.number_of_features)
     for x in range(n_policy_iter):
         w=method(D, env.phi_f, beta, gamma, w,3*env.number_of_features)
