@@ -2,7 +2,7 @@
 
 
 ## Description
-This is a Python implementation of Regularization and Feature Selection in Least Squares Temporal Difference Learning algorithm. For more information on the algorithm please refer to the paper
+This is Python implementations of Least Angle Regression Temporal Difference (LARS-TD) algorithm and Least-Squares Temporal Difference (LSTD). For more information on the algorithm please refer to the paper
 
 “Regularization and Feature Selection in Least Squares Temporal Difference Learning”
 
